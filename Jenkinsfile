@@ -8,7 +8,7 @@ pipeline {
         
         stage('clone src') {
             steps {
-                git branch: 'master', url: 'https://github.com/vaibhavghongade44/reactjs-project.git'
+                git branch: 'master', url: 'https://github.com/hackcoderr/nginx.git'
             }
         }
         stage('build docker image') {
