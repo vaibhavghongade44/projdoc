@@ -23,6 +23,10 @@ pipeline {
                 sh 'docker push vaibhav099/react-simple-app:latest'
             }
        }
-       
+       stage('deploy app') {
+            steps {
+                sshPublisher(publishers: [sshPublisherDesc(configName: 'react-server', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: 'docker run -dit --name react-app -p 3000:3000 vaibhav099/react-simple-app', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '', remoteDirectorySDF: false, removePrefix: '', sourceFiles: '')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
+            }
+       }
     }
 }
